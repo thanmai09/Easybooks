@@ -4,6 +4,7 @@ import { Mail, Lock, User, Store, Eye, EyeOff } from 'lucide-react';
 import { Button } from '../../components/ui/Button';
 import { Input, Select } from '../../components/ui/Input';
 import { Card } from '../../components/ui/Card';
+import { Logo } from '../../components/ui/Logo';
 import { saveSettings, getSettings } from '../../mock';
 
 export const RegisterPage: React.FC = () => {
@@ -54,15 +55,15 @@ export const RegisterPage: React.FC = () => {
 
       <div className="relative w-full max-w-lg">
         {/* Brand header */}
-        <div className="text-center flex flex-col items-center gap-2.5 mb-8">
-          <Link to="/" className="flex items-center gap-2">
-            <div className="w-9 h-9 rounded-xl bg-gradient-to-tr from-brand-500 to-brand-600 flex items-center justify-center text-white font-heading font-black text-lg shadow-sm">
-              Ac
-            </div>
-            <span className="font-heading font-extrabold text-slate-900 text-xl tracking-tight">Apna Books</span>
+        <div className="text-center flex flex-col items-center gap-4 mb-8">
+          <Link to="/" className="flex flex-col items-center gap-2">
+            <Logo variant="icon" size="lg" />
+            <span className="font-heading font-extrabold text-slate-900 text-2xl tracking-tight">ApnaBooks</span>
           </Link>
-          <h2 className="text-xl font-bold text-slate-800 tracking-tight mt-2">Create your business account</h2>
-          <p className="text-xs font-semibold text-slate-400">Zero credit card required. Start managing ledger in seconds.</p>
+          <div className="text-center">
+            <h2 className="text-sm font-bold text-slate-800 tracking-tight">Create your business account</h2>
+            <p className="text-xs font-semibold text-slate-400 mt-1">Zero credit card required. Start managing ledger in seconds.</p>
+          </div>
         </div>
 
         {/* Register Card */}
@@ -148,7 +149,7 @@ export const RegisterPage: React.FC = () => {
             </p>
 
             <Button type="submit" size="lg" fullWidth className="mt-2">
-              Initialize Apna Books
+              Initialize ApnaBooks
             </Button>
           </form>
         </Card>

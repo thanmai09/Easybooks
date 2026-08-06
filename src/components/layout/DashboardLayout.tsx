@@ -14,11 +14,13 @@ import {
   X, 
   Bell, 
   ChevronDown,
+  ChevronLeft,
   Info
 } from 'lucide-react';
 import { getSettings, getNotifications } from '../../mock';
 import { Badge } from '../ui/Badge';
 import { Button } from '../ui/Button';
+import { Logo } from '../ui/Logo';
 
 interface DashboardLayoutProps {
   children: React.ReactNode;
@@ -29,6 +31,7 @@ export const DashboardLayout: React.FC<DashboardLayoutProps> = ({ children }) =>
   const location = useLocation();
   
   const [isMobileOpen, setIsMobileOpen] = useState(false);
+  const [isCollapsed, setIsCollapsed] = useState(false);
   const [isNotificationOpen, setIsNotificationOpen] = useState(false);
   const [isProfileOpen, setIsProfileOpen] = useState(false);
   const [businessSettings, setBusinessSettings] = useState(getSettings());
@@ -62,16 +65,25 @@ export const DashboardLayout: React.FC<DashboardLayoutProps> = ({ children }) =>
       {/* ------------------------------------------------------------- */}
       {/* DESKTOP SIDEBAR */}
       {/* ------------------------------------------------------------- */}
-      <aside className="hidden lg:flex flex-col w-64 bg-white border-r border-slate-100 h-screen sticky top-0">
+      <aside className={`hidden lg:flex flex-col ${isCollapsed ? 'w-20' : 'w-64'} bg-white border-r border-slate-100 h-screen sticky top-0 transition-all duration-300`}>
         {/* Branding header */}
-        <div className="h-16 flex items-center px-6 border-b border-slate-100 gap-2.5">
-          <div className="w-9 h-9 rounded-xl bg-gradient-to-tr from-brand-500 to-brand-600 flex items-center justify-center text-white font-heading font-black text-lg shadow-sm">
-            Ac
+        <div className="h-16 flex items-center px-4.5 border-b border-slate-100 justify-between">
+          <div className="flex items-center gap-2.5 overflow-hidden">
+            <Logo variant="icon" size="sm" className="shrink-0" />
+            {!isCollapsed && (
+              <div className="animate-[fadeIn_0.2s_ease-out]">
+                <h1 className="text-sm font-bold text-slate-800 leading-tight">ApnaBooks</h1>
+                <p className="text-[10px] font-medium text-brand-600 uppercase tracking-widest leading-none">Business PWA</p>
+              </div>
+            )}
           </div>
-          <div>
-            <h1 className="text-sm font-bold text-slate-800 leading-tight">Apna Books</h1>
-            <p className="text-[10px] font-medium text-brand-600 uppercase tracking-widest leading-none">Business PWA</p>
-          </div>
+          
+          <button 
+            onClick={() => setIsCollapsed(!isCollapsed)}
+            className="p-1 rounded-lg text-slate-400 hover:bg-slate-50 hover:text-slate-650 transition-colors hidden lg:block"
+          >
+            <ChevronLeft size={16} className={`transition-transform duration-200 ${isCollapsed ? 'rotate-180' : ''}`} />
+          </button>
         </div>
 
         {/* Sidebar Nav Links */}
@@ -83,19 +95,24 @@ export const DashboardLayout: React.FC<DashboardLayoutProps> = ({ children }) =>
                 key={item.name}
                 to={item.path}
                 className={`
-                  flex items-center gap-3 px-3.5 py-3 rounded-xl text-sm font-semibold transition-all duration-150
+                  flex items-center gap-3 px-3.5 py-3 rounded-xl text-sm font-semibold transition-all duration-150 relative
                   ${isActive 
                     ? 'bg-brand-50 text-brand-600' 
                     : 'text-slate-500 hover:bg-slate-50 hover:text-slate-800'}
+                  ${isCollapsed ? 'justify-center px-0' : ''}
                 `}
+                title={isCollapsed ? item.name : undefined}
               >
                 {item.icon}
-                <span>{item.name}</span>
-                {item.name === 'Inventory' && notifications.some(n => n.type === 'alert') && (
+                {!isCollapsed && <span className="animate-[fadeIn_0.15s_ease-out]">{item.name}</span>}
+                {!isCollapsed && item.name === 'Inventory' && notifications.some(n => n.type === 'alert') && (
                   <span className="ml-auto w-2 h-2 rounded-full bg-accent-rose animate-pulse" />
                 )}
-                {item.name === 'Customers' && notifications.some(n => n.type === 'reminder') && (
+                {!isCollapsed && item.name === 'Customers' && notifications.some(n => n.type === 'reminder') && (
                   <span className="ml-auto w-2 h-2 rounded-full bg-amber-500" />
+                )}
+                {isCollapsed && ((item.name === 'Inventory' && notifications.some(n => n.type === 'alert')) || (item.name === 'Customers' && notifications.some(n => n.type === 'reminder'))) && (
+                  <span className="absolute top-2 right-2 w-2 h-2 rounded-full bg-accent-rose animate-pulse" />
                 )}
               </Link>
             );
@@ -104,24 +121,26 @@ export const DashboardLayout: React.FC<DashboardLayoutProps> = ({ children }) =>
 
         {/* Bottom profile/logout card */}
         <div className="p-4 border-t border-slate-100 flex flex-col gap-3">
-          <div className="flex items-center gap-3 px-2">
-            <div className="w-10 h-10 rounded-xl bg-brand-100 text-brand-700 flex items-center justify-center font-heading font-bold text-sm">
+          <div className={`flex items-center gap-3 ${isCollapsed ? 'justify-center px-0' : 'px-2'}`}>
+            <div className="w-10 h-10 rounded-xl bg-brand-100 text-brand-700 flex items-center justify-center font-heading font-bold text-sm shrink-0">
               {businessSettings.ownerName.split(' ').map(n => n[0]).join('')}
             </div>
-            <div className="overflow-hidden">
-              <h4 className="text-xs font-bold text-slate-800 truncate">{businessSettings.ownerName}</h4>
-              <p className="text-[10px] font-semibold text-slate-400 truncate">{businessSettings.businessName}</p>
-            </div>
+            {!isCollapsed && (
+              <div className="overflow-hidden animate-[fadeIn_0.2s_ease-out]">
+                <h4 className="text-xs font-bold text-slate-800 truncate">{businessSettings.ownerName}</h4>
+                <p className="text-[10px] font-semibold text-slate-400 truncate">{businessSettings.businessName}</p>
+              </div>
+            )}
           </div>
           
           <Button 
             variant="ghost" 
             size="sm" 
             onClick={handleLogout} 
-            className="w-full !justify-start text-rose-600 hover:bg-rose-50 hover:text-rose-700 rounded-xl"
+            className={`w-full text-rose-600 hover:bg-rose-50 hover:text-rose-700 rounded-xl ${isCollapsed ? '!justify-center !px-0' : '!justify-start'}`}
             icon={<LogOut size={16} />}
           >
-            Sign Out
+            {!isCollapsed && "Sign Out"}
           </Button>
         </div>
       </aside>
@@ -138,11 +157,9 @@ export const DashboardLayout: React.FC<DashboardLayoutProps> = ({ children }) =>
           <aside className="relative flex flex-col w-72 max-w-[80vw] bg-white h-full shadow-2xl animate-[slideRight_0.2s_ease-out]">
             <div className="h-16 flex items-center justify-between px-6 border-b border-slate-100">
               <div className="flex items-center gap-2.5">
-                <div className="w-8 h-8 rounded-lg bg-gradient-to-tr from-brand-500 to-brand-600 flex items-center justify-center text-white font-heading font-bold text-sm">
-                  Ac
-                </div>
+                <Logo variant="icon" size="sm" />
                 <div>
-                  <h1 className="text-xs font-bold text-slate-800 leading-tight">Apna Books</h1>
+                  <h1 className="text-xs font-bold text-slate-800 leading-tight">ApnaBooks</h1>
                 </div>
               </div>
               <button 

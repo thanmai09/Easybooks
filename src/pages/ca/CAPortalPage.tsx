@@ -226,7 +226,7 @@ export const CAPortalPage: React.FC = () => {
 
             {/* Disclaimer */}
             <p className="text-[10px] text-slate-400 font-semibold leading-normal mt-1 border-t border-slate-100 pt-3">
-              * GST reconciliations are dynamically generated matching simulated cash ledger inputs in Apna Books. Re-verify ledger attachments before filing.
+              * GST reconciliations are dynamically generated matching simulated cash ledger inputs in ApnaBooks. Re-verify ledger attachments before filing.
             </p>
           </div>
         )}

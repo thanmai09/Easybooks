@@ -23,6 +23,7 @@ import {
 } from 'lucide-react';
 import { Button } from '../../components/ui/Button';
 import { Card } from '../../components/ui/Card';
+import { Logo } from '../../components/ui/Logo';
 
 export const LandingPage: React.FC = () => {
   const navigate = useNavigate();
@@ -48,7 +49,7 @@ export const LandingPage: React.FC = () => {
   ];
 
   const testimonials = [
-    { name: 'Ramesh Patel', store: 'Patel Grocery Store', text: 'Earlier, I used to keep writing in notebooks. It took hours to calculate profit at month-end. With Apna Books, I know my cash balance in just 2 minutes!' },
+    { name: 'Ramesh Patel', store: 'Patel Grocery Store', text: 'Earlier, I used to keep writing in notebooks. It took hours to calculate profit at month-end. With ApnaBooks, I know my cash balance in just 2 minutes!' },
     { name: 'Sunita Rao', store: 'Elegant Clothing Boutique', text: 'This feels as easy as GPay! The customer credit features are excellent. My pending collection time has cut down by half.' },
     { name: 'Dr. Amit Shah', store: 'Medisec Chemists', text: 'Low stock notification is a lifesaver. My stock is always optimized now, and sharing data with my auditor is extremely easy.' }
   ];
@@ -59,7 +60,7 @@ export const LandingPage: React.FC = () => {
   ];
 
   const faqs = [
-    { q: 'Is Apna Books complicated to use?', a: 'Not at all! We designed it specifically for small business owners who do not understand complex accounting terms. If you know how to use WhatsApp or Google Pay, you can use this app easily.' },
+    { q: 'Is ApnaBooks complicated to use?', a: 'Not at all! We designed it specifically for small business owners who do not understand complex accounting terms. If you know how to use WhatsApp or Google Pay, you can use this app easily.' },
     { q: 'Can I install this on my phone?', a: 'Yes! It is a Progressive Web Application (PWA). Just open the link, click "Add to Home Screen" on your browser or install via prompt, and it will work exactly like a native app.' },
     { q: 'Does it work without internet?', a: 'Yes, it works offline. Your sales and inventory entries are stored locally on your device and will sync whenever you go back online.' },
     { q: 'Is my data secure?', a: 'Absolutely. We do not store or sell your transactional details. Everything is saved locally on your browser database or backed up securely under your private profile account.' }
@@ -71,12 +72,10 @@ export const LandingPage: React.FC = () => {
       {/* HEADER NAVBAR */}
       {/* ------------------------------------------------------------- */}
       <header className="fixed top-0 inset-x-0 h-16 bg-white/80 backdrop-blur-md border-b border-slate-100 z-50 px-6 lg:px-12 flex items-center justify-between">
-        <div className="flex items-center gap-2.5">
-          <div className="w-8 h-8 rounded-lg bg-gradient-to-tr from-brand-500 to-brand-600 flex items-center justify-center text-white font-heading font-bold text-sm">
-            Ac
-          </div>
-          <span className="font-heading font-extrabold text-slate-800 text-base">Apna Books</span>
-        </div>
+        <Link to="/" className="flex items-center gap-2.5 hover:opacity-90 transition-opacity">
+          <Logo variant="icon" size="sm" />
+          <span className="font-heading font-extrabold text-slate-800 text-base">ApnaBooks</span>
+        </Link>
         <div className="flex items-center gap-4">
           <Link to="/login" className="text-sm font-semibold text-slate-600 hover:text-slate-800">
             Sign In
@@ -210,7 +209,7 @@ export const LandingPage: React.FC = () => {
               Designed for your business category
             </h2>
             <p className="text-slate-500 font-medium text-sm">
-              We personalize Apna Books defaults (categories, taxes, units) according to what you retail.
+              We personalize ApnaBooks defaults (categories, taxes, units) according to what you retail.
             </p>
           </div>
           <div className="flex flex-wrap justify-center gap-4">
@@ -234,7 +233,7 @@ export const LandingPage: React.FC = () => {
             Powering everything your business needs to grow
           </h2>
           <p className="text-slate-500 font-medium text-sm md:text-base">
-            Lose the messy notebooks and calculators. Apna Books handles all operational ledger operations effortlessly.
+            Lose the messy notebooks and calculators. ApnaBooks handles all operational ledger operations effortlessly.
           </p>
         </div>
 
@@ -378,10 +377,8 @@ export const LandingPage: React.FC = () => {
       <footer className="bg-slate-900 border-t border-slate-800 text-white py-12 px-6 lg:px-12">
         <div className="max-w-7xl mx-auto flex flex-col sm:flex-row justify-between items-center gap-6 border-b border-slate-800 pb-8 mb-8">
           <div className="flex items-center gap-2.5">
-            <div className="w-8 h-8 rounded-lg bg-brand-500 flex items-center justify-center text-white font-heading font-bold text-sm">
-              Ac
-            </div>
-            <span className="font-heading font-extrabold text-base">Apna Books</span>
+            <Logo variant="icon" size="sm" />
+            <span className="font-heading font-extrabold text-base">ApnaBooks</span>
           </div>
           <div className="flex gap-6 text-xs font-semibold text-slate-400">
             <a href="#" className="hover:text-white">Privacy Policy</a>
@@ -391,7 +388,7 @@ export const LandingPage: React.FC = () => {
           </div>
         </div>
         <div className="max-w-7xl mx-auto flex flex-col sm:flex-row justify-between text-left text-[11px] font-medium text-slate-500 gap-4">
-          <p>© 2026 Apna Books Inc. All rights reserved.</p>
+          <p>© 2026 ApnaBooks Inc. All rights reserved.</p>
           <p>Bookkeeping Progressive Web Application for small stores and merchants.</p>
         </div>
       </footer>
