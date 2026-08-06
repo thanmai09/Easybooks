@@ -20,4 +20,4 @@ This project is currently being developed as a frontend-first application using 
 The project is currently under development. The first phase focuses on creating a complete frontend prototype with realistic mock data before integrating backend APIs and a database.
 
 ## Deployed Link 
-easybooks-xi.vercel.app
+https://easybooks-xi.vercel.app/
