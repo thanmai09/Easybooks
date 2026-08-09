@@ -1,37 +1,20 @@
-<<<<<<< HEAD
-# React + TypeScript + Vite
+# Apnabook
 
-This template provides a minimal setup to get React working in Vite with HMR and some Oxlint rules.
+Apnabook is a Progressive Web Application (PWA) designed for small business owners who still manage their daily accounts using notebooks or manual records.
 
-Currently, two official plugins are available:
+The goal of this project is to provide a simple, affordable, and easy-to-use accounting solution for businesses such as grocery stores, retail shops, clothing stores, medical shops, and other small businesses. Users can record sales, expenses, customer payments, and inventory without needing accounting knowledge.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+This project is currently being developed as a frontend-first application using static mock data. The initial focus is on building a clean, responsive, and user-friendly interface. Backend services, database integration, authentication, and other advanced features will be added in later stages.
 
-## React Compiler
+## Tech Stack
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+* React
+* TypeScript
+* Vite
+* Tailwind CSS
+* React Router
+* Progressive Web App (PWA)
 
-## Expanding the Oxlint configuration
+## Project Status
 
-If you are developing a production application, we recommend enabling type-aware lint rules by installing `oxlint-tsgolint` and editing `.oxlintrc.json`:
-
-```json
-{
-  "$schema": "./node_modules/oxlint/configuration_schema.json",
-  "plugins": ["react", "typescript", "oxc"],
-  "options": {
-    "typeAware": true
-  },
-  "rules": {
-    "react/rules-of-hooks": "error",
-    "react/only-export-components": ["warn", { "allowConstantExport": true }]
-  }
-}
-```
-
-See the [Oxlint rules documentation](https://oxc.rs/docs/guide/usage/linter/rules) for the full list of rules and categories.
-=======
-# Easybooks
-Simple accounting for every small business.
->>>>>>> 342de10334aa746fb7ccb2b7bdbca861de7ab709
+The project is currently under development. The first phase focuses on creating a complete frontend prototype with realistic mock data before integrating backend APIs and a database.

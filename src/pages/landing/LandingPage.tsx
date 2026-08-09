@@ -71,9 +71,9 @@ export const LandingPage: React.FC = () => {
       {/* ------------------------------------------------------------- */}
       {/* HEADER NAVBAR */}
       {/* ------------------------------------------------------------- */}
-      <header className="fixed top-0 inset-x-0 h-16 bg-white/80 backdrop-blur-md border-b border-slate-100 z-50 px-6 lg:px-12 flex items-center justify-between">
-        <Link to="/" className="flex items-center gap-2.5 hover:opacity-90 transition-opacity">
-          <Logo variant="icon" size="sm" />
+      <header className="fixed top-0 inset-x-0 h-16 bg-white/80 backdrop-blur-md border-b border-slate-100 z-50 px-4 sm:px-6 lg:px-12 flex items-center justify-between">
+        <Link to="/" className="flex items-center gap-2.5 hover:opacity-90 transition-opacity group">
+          <Logo variant="icon" size="sm" className="group-hover:scale-105 active:scale-95 transition-transform duration-200" />
           <span className="font-heading font-extrabold text-slate-800 text-base">ApnaBooks</span>
         </Link>
         <div className="flex items-center gap-4">
@@ -89,7 +89,7 @@ export const LandingPage: React.FC = () => {
       {/* ------------------------------------------------------------- */}
       {/* HERO SECTION */}
       {/* ------------------------------------------------------------- */}
-      <section className="pt-32 pb-20 px-6 lg:px-12 max-w-7xl mx-auto grid lg:grid-cols-12 gap-12 items-center">
+      <section className="pt-32 pb-20 px-4 sm:px-6 lg:px-12 max-w-7xl mx-auto grid lg:grid-cols-12 gap-12 items-center">
         <div className="lg:col-span-7 flex flex-col items-start text-left gap-6">
           <span className="bg-brand-50 text-brand-600 text-xs font-bold px-3.5 py-1.5 rounded-full uppercase tracking-wider">
             ⚡ Accounting Simplified
@@ -203,7 +203,7 @@ export const LandingPage: React.FC = () => {
       {/* CATEGORIES SECTION */}
       {/* ------------------------------------------------------------- */}
       <section className="bg-white py-20 border-y border-slate-100">
-        <div className="max-w-7xl mx-auto px-6 lg:px-12 text-center flex flex-col gap-10">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-12 text-center flex flex-col gap-10">
           <div className="flex flex-col gap-2 max-w-2xl mx-auto">
             <h2 className="text-2xl md:text-3xl font-extrabold text-slate-900 tracking-tight">
               Designed for your business category
@@ -226,7 +226,7 @@ export const LandingPage: React.FC = () => {
       {/* ------------------------------------------------------------- */}
       {/* FEATURES SECTION */}
       {/* ------------------------------------------------------------- */}
-      <section className="py-24 px-6 lg:px-12 max-w-7xl mx-auto">
+      <section className="py-24 px-4 sm:px-6 lg:px-12 max-w-7xl mx-auto">
         <div className="text-center flex flex-col gap-4 mb-16 max-w-3xl mx-auto">
           <span className="text-xs font-bold text-brand-600 uppercase tracking-widest leading-none">Complete Feature Suite</span>
           <h2 className="text-3xl md:text-4xl font-extrabold text-slate-900 leading-tight">
@@ -256,7 +256,7 @@ export const LandingPage: React.FC = () => {
       {/* TESTIMONIALS */}
       {/* ------------------------------------------------------------- */}
       <section className="bg-slate-900 py-24 text-white">
-        <div className="max-w-7xl mx-auto px-6 lg:px-12 text-center flex flex-col gap-16">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-12 text-center flex flex-col gap-16">
           <div className="flex flex-col gap-4 max-w-2xl mx-auto">
             <span className="text-[10px] font-bold text-brand-400 uppercase tracking-widest">Loved by Store Owners</span>
             <h2 className="text-2xl md:text-4xl font-heading font-extrabold">Join 50,000+ happy shop owners</h2>
@@ -284,7 +284,7 @@ export const LandingPage: React.FC = () => {
       {/* ------------------------------------------------------------- */}
       {/* PRICING SECTION */}
       {/* ------------------------------------------------------------- */}
-      <section className="py-24 px-6 lg:px-12 max-w-5xl mx-auto text-center flex flex-col gap-16">
+      <section className="py-24 px-4 sm:px-6 lg:px-12 max-w-5xl mx-auto text-center flex flex-col gap-16">
         <div className="flex flex-col gap-4 max-w-2xl mx-auto">
           <span className="text-xs font-bold text-brand-600 uppercase tracking-widest">Transparent Pricing</span>
           <h2 className="text-3xl font-extrabold text-slate-900">Choose the best fit for your shop</h2>
@@ -374,7 +374,7 @@ export const LandingPage: React.FC = () => {
       {/* ------------------------------------------------------------- */}
       {/* FOOTER */}
       {/* ------------------------------------------------------------- */}
-      <footer className="bg-slate-900 border-t border-slate-800 text-white py-12 px-6 lg:px-12">
+      <footer className="bg-slate-900 border-t border-slate-800 text-white py-12 px-4 sm:px-6 lg:px-12">
         <div className="max-w-7xl mx-auto flex flex-col sm:flex-row justify-between items-center gap-6 border-b border-slate-800 pb-8 mb-8">
           <div className="flex items-center gap-2.5">
             <Logo variant="icon" size="sm" />

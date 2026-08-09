@@ -221,7 +221,7 @@ export const DashboardLayout: React.FC<DashboardLayoutProps> = ({ children }) =>
       {/* ------------------------------------------------------------- */}
       <div className="flex-1 flex flex-col min-w-0">
         {/* Top Header navbar */}
-        <header className="h-16 bg-white border-b border-slate-100 px-6 flex items-center justify-between sticky top-0 z-40">
+        <header className="h-16 bg-white border-b border-slate-100 px-4 sm:px-6 flex items-center justify-between sticky top-0 z-40">
           <div className="flex items-center gap-4">
             <button
               onClick={() => setIsMobileOpen(true)}
@@ -256,7 +256,7 @@ export const DashboardLayout: React.FC<DashboardLayoutProps> = ({ children }) =>
               {isNotificationOpen && (
                 <>
                   <div className="fixed inset-0 z-40" onClick={() => setIsNotificationOpen(false)} />
-                  <div className="absolute right-0 mt-2.5 w-80 bg-white rounded-2xl border border-slate-100 shadow-xl z-50 p-4 max-h-[400px] overflow-y-auto animate-[fadeIn_0.15s_ease-out]">
+                  <div className="fixed sm:absolute top-16 sm:top-auto right-4 sm:right-0 left-4 sm:left-auto mt-2.5 sm:mt-2.5 w-auto sm:w-80 bg-white rounded-2xl border border-slate-100 shadow-xl z-50 p-4 max-h-[400px] overflow-y-auto animate-[fadeIn_0.15s_ease-out]">
                     <div className="flex items-center justify-between pb-3 border-b border-slate-100 mb-3">
                       <h4 className="text-xs font-bold text-slate-800 uppercase tracking-wider">Alerts & Reminders</h4>
                       <Badge variant="danger" size="sm">{notifications.length}</Badge>
@@ -347,7 +347,7 @@ export const DashboardLayout: React.FC<DashboardLayoutProps> = ({ children }) =>
         </header>
 
         {/* Dynamic page contents grid */}
-        <main className="flex-1 p-6 md:p-8 max-w-7xl w-full mx-auto animate-page-enter">
+        <main className="flex-1 p-4 sm:p-6 md:p-8 max-w-7xl w-full mx-auto animate-page-enter">
           {children}
         </main>
       </div>

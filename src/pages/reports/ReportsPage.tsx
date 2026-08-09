@@ -77,23 +77,23 @@ export const ReportsPage: React.FC = () => {
         </div>
         
         {/* Date Filter & Export */}
-        <div className="flex items-center gap-3 w-full sm:w-auto">
-          <div className="flex bg-slate-100 rounded-xl p-1 text-xs shrink-0">
+        <div className="flex flex-wrap items-center gap-3 w-full sm:w-auto">
+          <div className="flex bg-slate-100 rounded-xl p-1 text-xs shrink-0 w-full sm:w-auto justify-between sm:justify-start">
             {(['daily', 'weekly', 'monthly'] as const).map((period) => (
               <button
                 key={period}
                 onClick={() => setReportPeriod(period)}
-                className={`px-3 py-1.5 rounded-lg capitalize font-bold transition-all ${reportPeriod === period ? 'bg-white text-slate-800 shadow-xs' : 'text-slate-500 hover:text-slate-800'}`}
+                className={`flex-1 sm:flex-initial px-3 py-1.5 rounded-lg capitalize font-bold transition-all text-center ${reportPeriod === period ? 'bg-white text-slate-800 shadow-xs' : 'text-slate-500 hover:text-slate-800'}`}
               >
                 {period}
               </button>
             ))}
           </div>
-          <div className="flex gap-2 shrink-0">
-            <Button size="sm" variant="outline" icon={<Download size={14} />} onClick={() => handleDownload('Excel')}>
+          <div className="flex gap-2 shrink-0 w-full sm:w-auto">
+            <Button size="sm" variant="outline" className="flex-1 sm:flex-none justify-center" icon={<Download size={14} />} onClick={() => handleDownload('Excel')}>
               Excel
             </Button>
-            <Button size="sm" icon={<FileText size={14} />} onClick={() => handleDownload('PDF')}>
+            <Button size="sm" className="flex-1 sm:flex-none justify-center" icon={<FileText size={14} />} onClick={() => handleDownload('PDF')}>
               PDF Print
             </Button>
           </div>
@@ -127,24 +127,24 @@ export const ReportsPage: React.FC = () => {
       </div>
 
       {/* Tabs */}
-      <div className="flex border-b border-slate-100 text-sm font-semibold text-slate-500">
+      <div className="flex border-b border-slate-100 text-sm font-semibold text-slate-500 overflow-x-auto whitespace-nowrap scrollbar-none -mx-6 px-6 sm:mx-0 sm:px-0">
         <button
           onClick={() => setActiveTab('pnl')}
-          className={`pb-3.5 px-6 border-b-2 font-bold transition-all flex items-center gap-2 ${activeTab === 'pnl' ? 'border-brand-500 text-brand-600' : 'border-transparent hover:text-slate-800'}`}
+          className={`pb-3.5 px-6 border-b-2 font-bold transition-all flex items-center gap-2 shrink-0 ${activeTab === 'pnl' ? 'border-brand-500 text-brand-600' : 'border-transparent hover:text-slate-800'}`}
         >
           <DollarSign size={16} />
           Profit & Loss Summary
         </button>
         <button
           onClick={() => setActiveTab('sales')}
-          className={`pb-3.5 px-6 border-b-2 font-bold transition-all flex items-center gap-2 ${activeTab === 'sales' ? 'border-brand-500 text-brand-600' : 'border-transparent hover:text-slate-800'}`}
+          className={`pb-3.5 px-6 border-b-2 font-bold transition-all flex items-center gap-2 shrink-0 ${activeTab === 'sales' ? 'border-brand-500 text-brand-600' : 'border-transparent hover:text-slate-800'}`}
         >
           <TrendingUp size={16} />
           Sales Ledger Analytics
         </button>
         <button
           onClick={() => setActiveTab('expenses')}
-          className={`pb-3.5 px-6 border-b-2 font-bold transition-all flex items-center gap-2 ${activeTab === 'expenses' ? 'border-brand-500 text-brand-600' : 'border-transparent hover:text-slate-800'}`}
+          className={`pb-3.5 px-6 border-b-2 font-bold transition-all flex items-center gap-2 shrink-0 ${activeTab === 'expenses' ? 'border-brand-500 text-brand-600' : 'border-transparent hover:text-slate-800'}`}
         >
           <TrendingDown size={16} />
           Operating Expenditures
@@ -155,64 +155,64 @@ export const ReportsPage: React.FC = () => {
       {/* PROFIT & LOSS STATEMENTS */}
       {/* ------------------------------------------------------------- */}
       {activeTab === 'pnl' && (
-        <Card className="flex flex-col gap-6 p-8">
-          <div className="flex justify-between items-center border-b border-slate-100 pb-4">
+        <Card className="flex flex-col gap-6 p-4 sm:p-8">
+          <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4 border-b border-slate-100 pb-4">
             <div>
               <h3 className="text-base font-bold text-slate-800">Profit & Loss Ledger</h3>
               <p className="text-xs font-semibold text-slate-400">Statement period: Aug 1 - Aug 6, 2026</p>
             </div>
-            <Badge variant="success">Balanced Ledger</Badge>
+            <Badge variant="success" className="shrink-0">Balanced Ledger</Badge>
           </div>
 
           <div className="flex flex-col gap-4 text-xs font-semibold text-slate-600">
             {/* Income segment */}
             <div className="flex flex-col gap-2">
               <h4 className="text-[10px] font-bold text-slate-400 uppercase tracking-widest border-b border-slate-100 pb-1">1. Operating Income</h4>
-              <div className="flex justify-between py-1.5 px-2">
-                <span>Revenue Sales (Gross):</span>
-                <span className="text-slate-800 font-bold">{settings.currency}{totalSalesVal.toLocaleString()}</span>
+              <div className="flex justify-between items-start py-1.5 px-2 gap-4">
+                <span className="text-left">Revenue Sales (Gross):</span>
+                <span className="text-slate-800 font-bold text-right shrink-0">{settings.currency}{totalSalesVal.toLocaleString()}</span>
               </div>
-              <div className="flex justify-between py-1.5 px-2 bg-slate-50 rounded-lg">
-                <span className="text-slate-800 font-bold">Total Operating Income:</span>
-                <span className="text-slate-900 font-bold">{settings.currency}{totalSalesVal.toLocaleString()}</span>
+              <div className="flex justify-between items-start py-1.5 px-2 bg-slate-50 rounded-lg gap-4">
+                <span className="text-slate-850 font-bold text-left">Total Operating Income:</span>
+                <span className="text-slate-900 font-bold text-right shrink-0">{settings.currency}{totalSalesVal.toLocaleString()}</span>
               </div>
             </div>
 
             {/* COGS segment */}
             <div className="flex flex-col gap-2 mt-2">
               <h4 className="text-[10px] font-bold text-slate-400 uppercase tracking-widest border-b border-slate-100 pb-1">2. Cost of Sales (COGS)</h4>
-              <div className="flex justify-between py-1.5 px-2">
-                <span>Beginning Stock (Estimated):</span>
-                <span className="text-slate-700">{settings.currency}45,000</span>
+              <div className="flex justify-between items-start py-1.5 px-2 gap-4">
+                <span className="text-left">Beginning Stock (Estimated):</span>
+                <span className="text-slate-700 text-right shrink-0">{settings.currency}45,000</span>
               </div>
-              <div className="flex justify-between py-1.5 px-2">
-                <span>Wholesale Purchases (Inventory):</span>
-                <span className="text-slate-700">{settings.currency}{simulatedCOGS.toLocaleString()}</span>
+              <div className="flex justify-between items-start py-1.5 px-2 gap-4">
+                <span className="text-left">Wholesale Purchases (Inventory):</span>
+                <span className="text-slate-700 text-right shrink-0">{settings.currency}{simulatedCOGS.toLocaleString()}</span>
               </div>
-              <div className="flex justify-between py-1.5 px-2 bg-slate-50 rounded-lg">
-                <span className="text-slate-800 font-bold">Total Cost of Goods Sold (COGS):</span>
-                <span className="text-slate-950 font-bold">{settings.currency}{simulatedCOGS.toLocaleString()}</span>
+              <div className="flex justify-between items-start py-1.5 px-2 bg-slate-50 rounded-lg gap-4">
+                <span className="text-slate-850 font-bold text-left">Total Cost of Goods Sold (COGS):</span>
+                <span className="text-slate-950 font-bold text-right shrink-0">{settings.currency}{simulatedCOGS.toLocaleString()}</span>
               </div>
             </div>
 
             {/* Gross Margin */}
-            <div className="flex justify-between py-2 px-2 bg-emerald-50 text-emerald-800 rounded-xl text-xs font-bold border border-emerald-100/50 mt-2">
-              <span>Gross Profit (Income - COGS):</span>
-              <span>{settings.currency}{grossProfit.toLocaleString()}</span>
+            <div className="flex justify-between items-start py-2 px-2 bg-emerald-50 text-emerald-800 rounded-xl text-xs font-bold border border-emerald-100/50 mt-2 gap-4">
+              <span className="text-left">Gross Profit (Income - COGS):</span>
+              <span className="text-right shrink-0">{settings.currency}{grossProfit.toLocaleString()}</span>
             </div>
 
             {/* Operating Expenses segment */}
             <div className="flex flex-col gap-2 mt-4">
               <h4 className="text-[10px] font-bold text-slate-400 uppercase tracking-widest border-b border-slate-100 pb-1">3. Operating Expenses</h4>
               {Object.keys(expenseByCategory).map((cat) => (
-                <div key={cat} className="flex justify-between py-1.5 px-2">
-                  <span>{cat} expenditure:</span>
-                  <span className="text-slate-800 font-semibold">{settings.currency}{expenseByCategory[cat].toLocaleString()}</span>
+                <div key={cat} className="flex justify-between items-start py-1.5 px-2 gap-4">
+                  <span className="text-left">{cat} expenditure:</span>
+                  <span className="text-slate-800 font-semibold text-right shrink-0">{settings.currency}{expenseByCategory[cat].toLocaleString()}</span>
                 </div>
               ))}
-              <div className="flex justify-between py-1.5 px-2 bg-slate-50 rounded-lg">
-                <span className="text-slate-800 font-bold">Total Operating Expenses:</span>
-                <span className="text-slate-900 font-bold">{settings.currency}{totalExpensesVal.toLocaleString()}</span>
+              <div className="flex justify-between items-start py-1.5 px-2 bg-slate-50 rounded-lg gap-4">
+                <span className="text-slate-850 font-bold text-left">Total Operating Expenses:</span>
+                <span className="text-slate-900 font-bold text-right shrink-0">{settings.currency}{totalExpensesVal.toLocaleString()}</span>
               </div>
             </div>
 
@@ -220,11 +220,11 @@ export const ReportsPage: React.FC = () => {
             <div className="h-px bg-slate-150 my-2" />
 
             {/* Net PnL statement */}
-            <div className={`flex justify-between py-3 px-4 rounded-xl text-sm font-bold border ${netProfitVal >= 0 ? 'bg-gradient-to-r from-emerald-50 to-emerald-100/50 text-emerald-800 border-emerald-200/50 shadow-xs' : 'bg-rose-50 text-rose-800 border-rose-200/50'}`}>
-              <span className="flex items-center gap-1.5">
-                <Sparkles size={16} /> Net Profit / Loss:
+            <div className={`flex justify-between items-start py-3 px-4 rounded-xl text-sm font-bold border gap-4 ${netProfitVal >= 0 ? 'bg-gradient-to-r from-emerald-50 to-emerald-100/50 text-emerald-800 border-emerald-200/50 shadow-xs' : 'bg-rose-50 text-rose-800 border-rose-200/50'}`}>
+              <span className="flex items-center gap-1.5 text-left">
+                <Sparkles size={16} className="shrink-0" /> Net Profit / Loss:
               </span>
-              <span className="text-base">{settings.currency}{netProfitVal.toLocaleString()}</span>
+              <span className="text-base text-right shrink-0">{settings.currency}{netProfitVal.toLocaleString()}</span>
             </div>
           </div>
         </Card>
