@@ -233,7 +233,7 @@ export const DashboardPage: React.FC = () => {
                   <p className="text-[10px] font-semibold text-slate-400">Where you spent money this month</p>
                 </div>
               </div>
-              <div className="h-auto sm:h-64 flex items-center justify-center pt-2 py-2 sm:py-0">
+              <div className="h-auto flex items-center justify-center pt-2 py-2">
                 <DonutChart data={chartData.expenseBreakdown} />
               </div>
             </Card>

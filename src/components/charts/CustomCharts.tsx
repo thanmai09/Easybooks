@@ -426,9 +426,9 @@ export const DonutChart: React.FC<DonutChartProps> = ({ data }) => {
   let accumulatedAngle = 0;
 
   return (
-    <div className="flex flex-col xl:flex-row items-center gap-6 justify-center w-full">
+    <div className="flex flex-col items-center gap-5 justify-center w-full">
       {/* Circle rendering */}
-      <div className="relative w-[180px] h-[180px] shrink-0">
+      <div className="relative w-[160px] h-[160px] sm:w-[170px] sm:h-[170px] shrink-0">
         <svg 
           viewBox={`0 0 ${size} ${size}`} 
           className="w-full h-full"
@@ -473,14 +473,14 @@ export const DonutChart: React.FC<DonutChartProps> = ({ data }) => {
 
         {/* Total Text overlay in the middle of donut */}
         <div className="absolute inset-0 flex flex-col items-center justify-center pointer-events-none">
-          <span className="text-slate-400 text-[10px] uppercase font-semibold tracking-widest">
+          <span className="text-slate-400 text-[9px] uppercase font-semibold tracking-widest">
             {hoveredIdx !== null ? data[hoveredIdx].category : 'Total'}
           </span>
-          <span className="font-heading text-lg font-bold text-slate-800">
+          <span className="font-heading text-base font-bold text-slate-800">
             ₹{hoveredIdx !== null ? data[hoveredIdx].amount : totalAmount}
           </span>
           {hoveredIdx !== null && (
-            <span className="text-slate-500 text-xs font-semibold">
+            <span className="text-slate-500 text-[10px] font-semibold">
               {data[hoveredIdx].percentage}%
             </span>
           )}
@@ -488,7 +488,7 @@ export const DonutChart: React.FC<DonutChartProps> = ({ data }) => {
       </div>
 
       {/* Legend list */}
-      <div className="flex flex-col gap-2 w-full xl:w-auto text-left flex-1 min-w-0">
+      <div className="flex flex-col gap-1.5 w-full max-w-xs mx-auto text-left">
         {data.map((d, i) => (
           <div 
             key={i} 
@@ -497,7 +497,7 @@ export const DonutChart: React.FC<DonutChartProps> = ({ data }) => {
             onMouseLeave={() => setHoveredIdx(null)}
           >
             <div className="flex items-center gap-2 overflow-hidden mr-2">
-              <span className="w-3 h-3 rounded-full inline-block shrink-0" style={{ backgroundColor: d.color }} />
+              <span className="w-2.5 h-2.5 rounded-full inline-block shrink-0" style={{ backgroundColor: d.color }} />
               <span className="text-xs font-semibold text-slate-700 truncate">{d.category}</span>
             </div>
             <div className="text-xs font-bold text-slate-900 shrink-0">
